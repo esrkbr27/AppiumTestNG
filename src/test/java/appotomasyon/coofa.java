@@ -6,6 +6,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -24,6 +25,7 @@ public class coofa {
 
         if (driver == null) {
 
+
             try {
                 UiAutomator2Options options = new UiAutomator2Options();
                 options.setPlatformName("Android")
@@ -32,7 +34,8 @@ public class coofa {
                         .setPlatformVersion("10.0")
                         .setNoReset(false)
                         .setAutomationName("uiautomator2")
-                        .setAppPackage("com.bek.mobile.app");
+                        .setAppPackage("com.bek.mobile.app")
+                        .setDeviceName("Pixel 4");
 
 
                 driver = new AndroidDriver(
@@ -52,15 +55,25 @@ public class coofa {
 
     @Test
     public void test() throws InterruptedException {
+
         WebElement coofa=driver.findElement(By.xpath("(//*[@class='android.view.View'])[4]"));
         Thread.sleep(5);
         coofa.click();
-        Thread.sleep(20);
+        Thread.sleep(30);
 
 
     //    driver.findElement(By.xpath("(//*[@class='android.view.ViewGroup'])[1]")).click();
-        ReusableMethods.clickJS( driver.findElement(By.xpath("(//*[@class='android.view.ViewGroup'])[1]")));
-        Thread.sleep(30);
+
+            WebElement girisikon= driver.findElement(By.xpath("(//*[@class='android.view.ViewGroup'])[5]"));
+
+            ReusableMethods.clickJS(girisikon);
+            Thread.sleep(15);
+
+
+
+
+
+
 
 
     }

@@ -1,0 +1,87 @@
+                        APPİUM 2.0 Kurulum
+ * Appium 2.0 için  kurulması gereken programları verilen linkten faydalanarak kurabilirsiniz.
+ "https://www.youtube.com/watch?v=uRJG5hsOgD4&t=1414s"
+
+ Kurulması gereken programlar;
+ -Node.js
+ -IDE (İntelli J)
+ -jdk 11 (APPİUM da cucumber frameworkun hatasız çalışması için en stabil jdk 11, diğerlerinde PageFactory hata veriyor.)
+ -Android İnspector
+ -Android Stüdyo
+ -Vysor
+
+
+ * Appium 2.0 ile birlikte Appium Server kurulumuna gerek kalmadı.CMD ekranında appium yazınca server
+ otomatik olarak çalışmaya başlayacaktır.
+
+ *Appiumda sanal emülatör yüklemek için Android Stüdyodan faydalanırız.Virtual Device Manager dan Cretae Device diyerek
+ seçtiğimiz emülatoru yükleyerek testlerimiz için kulllanırız.
+
+ *Sanal cihazları kullanmak RAM de hem çok yer kapladığı ve yavaş çalıştığı için alternatif olarak
+ Android emülatör için Blue Stacks uygulamasından faydalanabiliriz.Oyun için tasarlanmış bu uygulamayı
+ emülatör olarak da kullananbiliriz.Bu durumda android stüdyodan cihaz yüklemeye gerek kalmıyor.Yukarıda
+ verilen linkte bu uygulamyı yüklemek için link mevcuttur.
+
+ *Testler için gerçek cihazdan faydalanmak istiyorsak Vysor uygulmasını kurup cihazda Geliştirici Seçenekleri ni
+ aktifleştirmek gerekir.Cihazda sistem ayarlarında genelde IP numarasını 7 kez tıklayarak bunu aktifleştirebiliriz.
+ Daha sonra USB hata ayıklması ayarını aktifleştirip bir usb cihazı (data transfer kablosu daha iyi olur, bazen şarj cihazları
+ ile bağlanıldığında cihaz tanınmıyor) ile bağlanılır.WİFİ ile de bu bağlantı sağlanabilir.
+
+
+
+ *Sanal cihazlar için android için setcapability de version olarak genelde 10.0 seçeriz .Fakat
+ Otomasyon yaparken gerçek cihaz kullanacak isek dikkat edeceğimiz noktalar şunlardır:
+
+ 1.Cihaz hangi sürümde ise setcapability ayarına onu doğru girmek gerekir.Telefon ayarlarında Hakkında
+ kısmında hangi sürümde olduğunu öğrenebiliriz.Aynı zamanda SDK ayarlarında da o sürümün yüklü
+ olduğundan emin olmalıyız.
+
+ 2.Cihazın ismi sanal emülatörde ne ise onu girmek gerektiği gibi (genelde Pixel 4 olarak gelir) gerçek cihazda da
+ vysor a bağlandığı sırada cihaza verdiği harflerden ve rakamdan oluşan isim ne ise onu set etmek gerekir.USB kablosunu
+ takarken bu isim gelmektedir.Aksi halde gerçek cihaza bağlanmak mümkün olmuyor.
+
+ 3.Gerçek cihaza bağlanırlen set ettiğimiz ayarlardan setUdid ayarını kullanmamıza gerek kalmıyor.
+ Bu ayar sanal cihaz için kullanılır.Ayar yaparken pasif hale getirmeyi unutmayınız.
+
+ *İntelliJ de frameworku kurduktan sonra server ile bağlantı sağlamak için bazı ayarları yapmamız gerekecektir.
+ Bu ayarlar her testten önce çalışıp servera istek gönderip ilgili cihazla bağlanıtımızı sağlayacaktır.
+ Appium 2.0 dan önceki versiyonlarda "  DesiredCapabilities" sınıfından faydalanarak yaptığımız bu ayarları,
+ Appium 2.0 ile birlikte " UiAutomator2Options" sınıfından faydalanark yaparız.Appium 2.0 ile birlikte driver ı new URL ile
+ birlikte tanımlamamıza da gerek kalmadı,otomatik olarak kendisi tanımlıyor
+
+     UiAutomator2Options options = new UiAutomator2Options();
+                 options.setPlatformName("Android")
+                         .setUdid("emulator-5554")
+                         .setAppActivity("com.dmall.mfandroid.activity.base.NewSplash")
+                         .setPlatformVersion("10.0")
+                         .setNoReset(false)
+                         .setAutomationName("uiautomator2")
+                         .setAppPackage("com.dmall.mfandroid");
+
+
+
+                 driver = new AndroidDriver(
+
+                         new URL("http://127.0.0.1:4723"), options
+
+                 );
+
+             } catch (MalformedURLException e) {
+                 throw new RuntimeException(e);
+             }
+
+                     ----------------------------Appium Locators Strategies-------------
+
+     *https://www.browserstack.com/guide/locators-in-appium  sitesinde efektive locate nasıl alınır faydalanılabilir.
+     *https://www.youtube.com/watch?v=z4crJhOMbS4&t=111s locate nasıl alınır bakılabilir.
+     -> UI Automator Selector ile locate alırken UiSelector() classından faydalanarak locate alınabilir.
+     *UiSelector().checkable(boolean val)
+     *UiSelector().checked(boolean val)
+     *UiSelector().	clickable(boolean val)
+     *UiSelector().	focusable(boolean val)
+     *UiSelector().instance(int instance)
+     *UiSelector().textStartsWith(String text)
+
+
+
+

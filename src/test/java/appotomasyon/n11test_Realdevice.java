@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class n11test {
+public class n11test_Realdevice {
     public AppiumDriver driver;
 
     By kategorilerbtn=By.xpath("(//*[@resource-id='com.dmall.mfandroid:id/navigation_bar_item_icon_view'])[2]");
@@ -19,6 +19,16 @@ public class n11test {
     public void before() {
 
         if (driver == null) {
+            /*
+            Bu classta gercek cihaza bağlanmak için emülatör olmadığı için,
+            setUdid ayarını yoruma aldık.Gercek cihazı tanımak için deviceName kısmına
+            cihazın vysorda ilk görünen ismini yazdık.Cihazımız 9.0 versiyonunda olduğu için
+            versiyonu 9.0 olarak yazdık.
+
+            NOT:Bu bilgiler cihazdan cihaza değişeceği için bağladığımız cihazın vysorda çıkan ismi
+            ve versiyonuda değişecektir.
+
+             */
 
             try {
                 UiAutomator2Options options = new UiAutomator2Options();

@@ -1,6 +1,8 @@
                         APPİUM 2.0 Kurulum
  * Appium 2.0 için  kurulması gereken programları verilen linkten faydalanarak kurabilirsiniz.
  "https://www.youtube.com/watch?v=uRJG5hsOgD4&t=1414s"
+ *Appium un kurulumunu kaldırmak için cmdye aşağıdaki komut yazılır;
+- npm uninstall -g appium
 
  Kurulması gereken programlar;
  -Node.js
@@ -10,6 +12,13 @@
  -Android Stüdyo
  -Vysor
 
+ *Appiumda kullanacağımız driver listesini görmek için;
+ appium driver list
+ *İstediğimiz driverı yüklemek için;
+ appium driver install xcode
+
+ *Appium Inspector ile mobil cihaz ile server arasında bağlantı kurmuş oluyoruz.Mobil cihazdaki elementlere
+ ulaşmak için Android İnspectoru kullanırız ve elementlerin locateini alabiliriz.
 
  * Appium 2.0 ile birlikte Appium Server kurulumuna gerek kalmadı.CMD ekranında appium yazınca server
  otomatik olarak çalışmaya başlayacaktır.

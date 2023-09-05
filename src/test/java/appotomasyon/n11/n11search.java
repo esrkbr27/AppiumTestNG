@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.pagefactory.AndroidBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -60,10 +61,10 @@ public class n11search {
 
     @Test
     public void search(){
-        WebElement searchbar=driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.view.ViewGroup/android.widget.TextView"));
-        
-
-
+      //  WebElement searchbar=driver.findElement(By.id("com.dmall.mfandroid:id/tvHomeSearchBar"));
+      //  searchbar.sendKeys("apple"+ Keys.ENTER);
     }
 
 }
+
+

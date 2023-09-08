@@ -1,4 +1,4 @@
-package appotomasyon;
+package appotomasyon.coofa;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;

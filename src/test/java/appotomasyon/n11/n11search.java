@@ -1,4 +1,4 @@
-package appotomasyon;
+package appotomasyon.n11;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;

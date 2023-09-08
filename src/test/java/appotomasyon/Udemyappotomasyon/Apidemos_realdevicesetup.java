@@ -1,9 +1,9 @@
-package appotomasyon.n11;
+package appotomasyon.Udemyappotomasyon;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import org.openqa.selenium.By;
+import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -11,10 +11,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class n11test_Realdevice {
-    public AppiumDriver driver;
+public class Apidemos_realdevicesetup {
 
-    By kategorilerbtn=By.xpath("(//*[@resource-id='com.dmall.mfandroid:id/navigation_bar_item_icon_view'])[2]");
+    AppiumDriver driver;
+
     @BeforeTest
     public void before() {
 
@@ -28,23 +28,26 @@ public class n11test_Realdevice {
             NOT:Bu bilgiler cihazdan cihaza değişeceği için bağladığımız cihazın vysorda çıkan ismi
             ve versiyonuda değişecektir.
 
+            udid : cmd ekranına adb devices yazınca bağlı cihazın udid değerini verir.
+
              */
 
             try {
-                UiAutomator2Options options = new UiAutomator2Options();
-                options.setPlatformName("Android")
-                 //       .setUdid("emulator-5554")
-                        .setAppActivity("com.dmall.mfandroid.activity.base.NewSplash")
-                        .setPlatformVersion("9.0")
-                        .setNoReset(false)
-                        .setAutomationName("uiautomator2")
-                        .setAppPackage("com.dmall.mfandroid")
-                        .setDeviceName("df8cd3cb");
+
+                DesiredCapabilities caps=new DesiredCapabilities();
+                caps.setCapability(MobileCapabilityType.PLATFORM_NAME,"Anroid");
+                caps.setCapability(MobileCapabilityType.UDID,"df8cd3cb");
+                caps.setCapability(MobileCapabilityType.APP,"C:/Users/esra.demirci/AppiumTestNG/src/main/resources/Apidemos-debug.apk");
+                caps.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
+                caps.setCapability(MobileCapabilityType.DEVICE_NAME,"GM8");
+                caps.setCapability("newCommandTimeout",3000);
+
+
 
 
                 driver = new AndroidDriver(
 
-                        new URL("http://127.0.0.1:4723"), options
+                        new URL("http://127.0.0.1:4723"),caps
 
                 );
 
@@ -58,18 +61,10 @@ public class n11test_Realdevice {
     }
 
     @Test
-    public void test() {
-       driver.findElement(kategorilerbtn).click();
+    public void firsttest(){
 
-    }
+        System.out.println("session id"+ driver.getSessionId());
 
-    public void teardown() {
-
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
     }
 
 }
-

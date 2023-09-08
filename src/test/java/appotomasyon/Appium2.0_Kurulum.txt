@@ -32,9 +32,9 @@
  verilen linkte bu uygulamyı yüklemek için link mevcuttur.
 
  *Testler için gerçek cihazdan faydalanmak istiyorsak Vysor uygulmasını kurup cihazda Geliştirici Seçenekleri ni
- aktifleştirmek gerekir.Cihazda sistem ayarlarında genelde IP numarasını 7 kez tıklayarak bunu aktifleştirebiliriz.
- Daha sonra USB hata ayıklması ayarını aktifleştirip bir usb cihazı (data transfer kablosu daha iyi olur, bazen şarj cihazları
- ile bağlanıldığında cihaz tanınmıyor) ile bağlanılır.WİFİ ile de bu bağlantı sağlanabilir.
+ aktifleştirmek gerekir.Cihazda sistem ayarlarında genelde Sistem Ayarlarında IP numarasını 7 kez tıklayarak
+ bunu aktifleştirebiliriz.Daha sonra USB hata ayıklması ayarını aktifleştirip bir usb cihazı (data transfer kablosu daha iyi olur, bazen şarj cihazları
+ ile bağlanıldığında cihaz tanınmıyor) ile bağlanılır.WİFİ ile de bu bağlantı sağlanabilir.(Android 11 versiyon üzeri için)
 
 
 
@@ -49,14 +49,22 @@
  vysor a bağlandığı sırada cihaza verdiği harflerden ve rakamdan oluşan isim ne ise onu set etmek gerekir.USB kablosunu
  takarken bu isim gelmektedir.Aksi halde gerçek cihaza bağlanmak mümkün olmuyor.
 
- 3.Gerçek cihaza bağlanırlen set ettiğimiz ayarlardan setUdid ayarını kullanmamıza gerek kalmıyor.
- Bu ayar sanal cihaz için kullanılır.Ayar yaparken pasif hale getirmeyi unutmayınız.
+ 3.Bağlı cihazların (emülatör veya real device) udid (udid; cihazların unique id değeri demektir)
+  değerlerini öğrenmek için; cmd ye "adb devices" komutunu yazarız. Sonuç olarak bağlı cihazların
+  udid değerlerini öğrenmiş oluruz.
+
+ 4.Bağlı cihazların device name ini öğrenmek istiyorsak Android Stüdyodan SDK Manager veya Device Manager dan
+ bağlı cihazın isminin olduğu satırda üç noktaya tıklayıp View Details tıklandığında name: kısmında
+ cihazın ismini doğru bir şekilde alabiliriz.Vysorda  gerçek cihaz bağlandığında da ismini görebiliriz.
+
+ 5.
+
 
  *İntelliJ de frameworku kurduktan sonra server ile bağlantı sağlamak için bazı ayarları yapmamız gerekecektir.
  Bu ayarlar her testten önce çalışıp servera istek gönderip ilgili cihazla bağlanıtımızı sağlayacaktır.
  Appium 2.0 dan önceki versiyonlarda "  DesiredCapabilities" sınıfından faydalanarak yaptığımız bu ayarları,
- Appium 2.0 ile birlikte " UiAutomator2Options" sınıfından faydalanark yaparız.Appium 2.0 ile birlikte driver ı new URL ile
- birlikte tanımlamamıza da gerek kalmadı,otomatik olarak kendisi tanımlıyor
+ Appium 2.0 ile birlikte androidler için  " UiAutomator2Options" sınıfından faydalanark da yapabiliriz.
+ Appium 2.0 ile birlikte driver ı new URL ile birlikte tanımlamamıza da gerek kalmadı,otomatik olarak kendisi tanımlıyor
 
      UiAutomator2Options options = new UiAutomator2Options();
                  options.setPlatformName("Android")
@@ -70,9 +78,7 @@
 
 
                  driver = new AndroidDriver(
-
                          new URL("http://127.0.0.1:4723"), options
-
                  );
 
              } catch (MalformedURLException e) {

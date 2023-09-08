@@ -1,5 +1,6 @@
 package utilities;
 
+import appotomasyon.Udemyappotomasyon.CreateDriverSession;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
@@ -14,12 +15,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static appotomasyon.coofa.driver;
+
 
 public class ReusableMethods {
 
+    static AppiumDriver driver;
+
+    static {
+        try {
+            driver = CreateDriverSession.initilazedriver("Pixel 5");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     static Actions actions = new Actions(driver);
+
+    public ReusableMethods() throws Exception {
+    }
 
     public static void longPress(WebElement element) {
         ((JavascriptExecutor) driver).executeScript(

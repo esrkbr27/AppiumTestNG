@@ -35,7 +35,7 @@ public class n11search {
                 UiAutomator2Options options = new UiAutomator2Options();
                 options.setPlatformName("Android")
                         .setUdid("emulator-5554")
-                        .setAppActivity("com.dmall.mfandroid.activity.base.NewSplash")
+                        .setAppActivity("com.dmall.mfandroid.activity.base.SplashActivity")
                         .setPlatformVersion("10.0")
                         .setNoReset(false)
                         .setAutomationName("uiautomator2")
@@ -61,8 +61,8 @@ public class n11search {
 
     @Test
     public void search(){
-      //  WebElement searchbar=driver.findElement(By.id("com.dmall.mfandroid:id/tvHomeSearchBar"));
-      //  searchbar.sendKeys("apple"+ Keys.ENTER);
+        WebElement searchbar=driver.findElement(By.id("com.dmall.mfandroid:id/tvHomeSearchBar"));
+        searchbar.sendKeys("apple"+ Keys.ENTER);
     }
 
 }

@@ -4,6 +4,7 @@ import appotomasyon.Udemyappotomasyon.CreateDriverSession;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
@@ -31,8 +32,7 @@ public class ReusableMethods {
 
     static Actions actions = new Actions(driver);
 
-    public ReusableMethods() throws Exception {
-    }
+
 
     public static void longPress(WebElement element) {
         ((JavascriptExecutor) driver).executeScript(

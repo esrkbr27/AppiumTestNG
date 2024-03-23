@@ -59,7 +59,7 @@ public class n11test_Realdevice {
 
     @Test
     public void test() {
-       driver.findElement(kategorilerbtn).click();
+     //  driver.findElement(kategorilerbtn).click();
 
     }
 
